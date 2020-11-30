@@ -1,0 +1,38 @@
+<?
+session_start();
+
+if(array_key_exists("revelio", $_GET)) {
+    // only admins can reveal the password
+    if(!($_SESSION and array_key_exists("admin", $_SESSION) and $_SESSION["admin"] == 1)) {
+    header("Location: /");
+    }
+}
+?>
+
+<?
+    if(array_key_exists("revelio", $_GET)) {
+    print "You are an admin. The credentials for the next level are:<br>";
+    print "<pre>Username: natas23\n";
+    print "Password: <censored></pre>";
+    }
+?> 
+
+ENGLISH:
+
+if there is a revelio, then:
+	if there is not (a $_SESSION array and an admin key in that array and the value 1 in that admin key)
+		then change the header location to / (this will get rid of revelio if you are not an admin)
+if there is still a revelio, then print out the password to natas23
+
+It seems to work if you just send it straight to the repeater with the ?revelio=somethinghere added to the url
+
+to be specific:
+1. log in
+2. turn on intercept
+3. add ?revelio=somethinghere to the end of the url
+4. hit enter
+5. go to proxy, send to repeater
+6. send
+
+Burpsuite automatically turns off redirect; follow instructions above
+to see how to do it manually see natas22.py
