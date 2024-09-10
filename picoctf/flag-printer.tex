@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{stephenmath}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{mdframed}
+\usepackage{hyperref}
+\usepackage[headsep=24pt, headheight=50pt]{geometry}
+
+
+\title{PicoCTF Cryptography Challenge Solutions}
+\author{Stephen Kelman}
+\date{9 September 2024}
+
+\begin{document} 
+\maketitle
+\begin{mdframed}
+    \section*{flag\_printer}
+    I made a program to solve a problem, but it seems too slow :(\\
+    Download the program \href{https://artifacts.picoctf.net/c_titan/19/flag_printer.py}{here}.\\
+    Download the message \href{https://artifacts.picoctf.net/c_titan/19/encoded.txt}{here}.\\
+\end{mdframed}
+Solution:
+The code creates the following matrix:
+\begin{gather*}
+    \begin{pmatrix}
+        0^0\pmod{m} & 0^1\pmod{m} & \cdots & 0^{n}\pmod{m}\\
+        1^0\pmod{m} & 1^1\pmod{m} & \cdots & 1^{n}\pmod{m}\\
+        \vdots & \vdots & \ddots & \vdots \\
+        n^0\pmod{m} & n^1\pmod{m} &\cdots & n^n\pmod{m} \\
+    \end{pmatrix}
+\end{gather*}
+where $m$ is the prime number $7514777789$, and $n$ is $1769610$.
+We're also given a vector of $n+1$ $y$-values which are meant to correspond to each row of this matrix.
+The flag, encoded into bytes, is the solution to the linear system of equations given by the above matrix and
+the $y$-values, taken $\mod m$.
+
+Here's the thing: Evaluating this as-is, with just row-reduction or something similar, is $O(n^3)$, so 
+it makes sense to instead use special properties of this specific matrix to help us find the solution.
+Of course, since the rows in the matrix are $(x^0,x^1,x^2,\ldots,x^n)$ over the ring $\Z/m\Z$ 
+(field, in fact, since $m$ is prime), this is screaming, ``POLYNOMIAL!!!''
+Unfortunately, I don't really know anything yet about figuring out polynomials over finite fields based on
+a given list of points (or even how to do this over $\R$ in general), so I'll come back and finish this solution once I do.
+
+Credits to \href{}{Peter-Simon Dieterich} for posting a solution to give me a nudge in the right direction.
+From his solution, I'll be going through the following before I come up with my own solution and return to finish this:
+\begin{enumerate}
+    \item \href{https://en.wikipedia.org/wiki/Lagrange_polynomial}{Lagrange Interpolation}
+    \item \href{https://en.wikipedia.org/wiki/Newton_polynomial}{Newton Interpolation}
+    \begin{enumerate}
+        \item As mentioned by Dieterich's solution, neither of these are sufficiently fast to give the solution in
+              a reasonable amount of time. However, I feel like it would be unreasonable to start learning about polynomial
+              interpolation just through highly optimized computer algebra techniques, as opposed to the actual 
+              mathematical fundamentals
+    \end{enumerate}
+    \item \href{https://mathoverflow.net/questions/408666/fastest-implementation-of-polynomial-interpolation/458091#458091}{This}
+          MathOverflow thread about optimizing polynomial interpolation 
+    \item Chapter 10: Fast polynomial evaluation and interpolation, of 
+    \href{https://www.cambridge.org/core/books/modern-computer-algebra/DB3563D4013401734851CF683D2F03F0}{Modern Computer Algebra}
+\end{enumerate}
+
+
+\newpage
+
+\end{document}
