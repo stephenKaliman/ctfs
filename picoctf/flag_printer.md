@@ -15,4 +15,5 @@ Some notes:
 - Since `m` is prime, this field luckily just looks like the integers mod m.
 - Some quick testing of the galois module tells me that since this field is just the ring of integers mod m, GF(m) isn't really doing anything fancy, just basically returning the
   same number back, but "as a field element"
-- GF(0) is going to be the 0 element, which means that since x_1=0, the entire first row of `matrix` is just going to be all 0's.
+- GF(0) is going to be the 0 element, which means that since x_1=0, the entire first row of `matrix` is just going to be all 0's, except for its very first entry,
+  which is 1 since python evaluates `0^0` as being equal to 1.
