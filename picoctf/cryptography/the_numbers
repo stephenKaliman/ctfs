@@ -1,0 +1,13 @@
+# Given:
+[this image](https://jupiter.challenges.picoctf.org/static/f209a32253affb6f547a585649ba4fda/the_numbers.png)
+
+# Solution:
+Looks pretty clear that it's just the numbers
+of letters with 1-26 corresponding to a-z
+1. Copy the text from the image 
+(I did this on my phone, which is pretty good
+at extracting text from images)
+2. Paste into a decoder like [this](https://www.boxentriq.com/code-breaking/numbers-to-letters)
+3. Make sure that spaces line up, remove braces
+
+picoCTF{thenumbersmason}
