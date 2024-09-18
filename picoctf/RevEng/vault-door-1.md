@@ -46,6 +46,18 @@ password[26] = 'f'
 password[31] = '0'
 print("".join(password))
 ```
+<details>
+  <summary>(Some block editing tips)</summary>
+  
+  >  Most modern text editors allow you to type in multiple places at once by `Alt` + Clicking on the spots where you want to edit. This gives you multiple cursors that all do the same thing. 
+
+  >  Similarly, you can `Alt`+`Shift`+ click and drag to get your cursor in the same spot across multiple lines, and even highlight over some blocks
+
+  >  Another helpful tool for this which isn't exclusive to block-editing is that `Ctrl`+ left/right arrow keys (respectively) 
+    skips to the start/end of the previous/next alphanumeric string OR special character string 
+ 
+  >  This is often useful to keep your cursor lined up when different lines have the same structure, but perhaps different length words/numbers/etc
+</details>
 
 Giving us the answer:
 ```
