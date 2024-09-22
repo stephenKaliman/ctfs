@@ -1,8 +1,8 @@
 # Given
 
 Are overflows just a stack concern?
-Download the binary [here].
-Download the source [here].
+Download the binary [here](https://artifacts.picoctf.net/c_tethys/13/chall).
+Download the source [here](https://artifacts.picoctf.net/c_tethys/13/chall.c).
 Additional details will be available after launching your challenge instance.
 
 # Solution
