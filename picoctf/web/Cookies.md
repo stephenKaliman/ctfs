@@ -1,4 +1,5 @@
 # Given
+Who doesn't love cookies? Try to figure out the best one. http://mercury.picoctf.net:27177/
 
 # Solution
 I started by trying stuff out in devtools, specifically focusing on the cookies (under the application tab)
